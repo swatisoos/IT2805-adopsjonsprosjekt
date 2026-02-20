@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hunder</title>
+
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="icon" type="image/x-icon" href="../images/logo_rund.png" >
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+    <div id="navbar"></div>
+    
+
+    <div id = "innhold">
+
+        <!--div hvor det vil bli sendt navn og bilde på hunden fra createTopOfDogNPage i createDogNPage.js-->
+        <div id = "navnOgOverskrift"></div>
+
+        <div id = "DogNPage_section">
+
+            <article id = "om">
+                <h2>Om</h2>
+                <button type = "button" id = "adopsjonsknapp"> Adopter </button>
+            </article>
+
+            <!--div hvor det vil bli sendt info om hunden fra createInfo i createDogNPage-->
+            <div id = "hundeinfo"></div>
+            
+
+            <!--Skjemaet som dukker opp når man klikker på adopter-->
+            <div id = "skjemaside">
+                <p id = "soknad" > SØKNAD FOR ADOPSJON</p>
+                <p id = "adopsjon"> Adopter denne hunden</p> <!--Usikker på om jeg får til å hente inn navnet fra js funksjonen, droppe å ha med navn?-->
+                <p id = "soknadsinfo"> Fortell litt om deg selv, så tar vi kontakt!</p>
+            
+                <form id = "skjema">
+                    <label for="navn"> Navn: </label><br>
+                    <input type="text" name="navn" id="navn" required><br>
+                    <label for="mail"> Mail: </label><br>
+                    <input type="text" name = "mail" id = "mail" required><br>
+                    <label for="søknad"> Søknad: </label><br>
+                    <textarea name = "søknad" id = "søknad" > </textarea><br>
+                    <input type="submit"><br>
+                </form>
+            
+                <!--det skjer det ingen ting når man trykker på send inn, annet enn at skjemaet forsvinner igjen. 
+                    Ville videre fikset at det dukket opp en melding om at skjemaet er sendt inn eller liknende.
+                -->
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--legger til info om en hund-->
+    <script src="../JS/allDogs.js"></script>
+
+    <!--Bruker local storage for dogID, for å sende mellom Dogs.html og DogNPage.html. Kaller så på funksjonene 
+        under som ligger i allDogs.js med denne id-en for å sende info om hundene til diver på denne html siden
+        Brukt for å unngå repetativ kode
+    -->
+    <script>
+        const dogID = localStorage.getItem("dogID");
+        createTopOfDogNPage(dogID);
+        createInfo(dogID);
+    </script>
+
+    <!--legger til formet-->
+    <script src="../JS/adoptionform.js"></script>
+
+    <!--legger til navbaren-->
+    <script src="../JS/nav.js"></script> 
+
+    <!--legger til hamburgermeny for en responsive header-->
+    <script src="../JS/hamburger.js"></script>
+
+    <!--legger til footer-->
+    <div class = "grid"></div>
+    <script src="../JS/footer.js"></script>
+
+    
+
+</body>
+</html>
